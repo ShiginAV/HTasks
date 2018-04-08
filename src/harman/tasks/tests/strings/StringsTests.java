@@ -7,43 +7,49 @@ import harman.tasks.strings.Task4;
 import harman.tasks.strings.Task5;
 
 public class StringsTests {
-    private final String DONE = "Test done";
-    private final String FAILED = "Test failed";
+    public void testStatus(String taskName, boolean test) {
+        String status = test ? "Test done" : "Test failed";
+        System.out.printf("%s: %s\n", taskName, status);
+    }
 
-    public String testTask1() {
+    public boolean testTask1() {
         Task1 task1 = new Task1();
         char result = task1.getCharacterByIndex("Hello World", 6);
-        return result == 'W' ? DONE : FAILED;
+        char expect = 'W';
+        return result == expect;
     }
 
-    public String testTask2() {
+    public boolean testTask2() {
         Task2 task2 = new Task2();
-        return task2.isContainsSequenceOfChar("Hello", new char[] {'H', 'e', 'l', 'l', 'o'}) ? DONE : FAILED;
+        return task2.isContainsSequenceOfChar("Hello", new char[] {'H', 'e', 'l', 'l', 'o'});
     }
 
-    public String testTask3() {
+    public boolean testTask3() {
         Task3 task3 = new Task3();
         String result = task3.getInitials("Ivan", "Petrov");
-        return result.equals("I.P.") ? DONE : FAILED;
+        String expect = "I.P.";
+        return result.equals(expect);
     }
 
-    public String testTask4() {
+    public boolean testTask4() {
         Task4 task4 = new Task4();
-        return task4.isAnagram("Internet", "Tine Rent") ? DONE : FAILED;
+        return task4.isAnagram("Internet", "Tine Rent");
     }
 
-    public String testTask5() {
+    public boolean testTask5() {
         Task5 task5 = new Task5();
-        return task5.convertHexStringToDecInt("0xff") == 255 ? DONE : FAILED;
+        int result = task5.convertHexStringToDecInt("0xff");
+        int expect = 255;
+        return result == expect;
     }
 
     public static void main(String[] args) {
         StringsTests stringsTests = new StringsTests();
 
-        System.out.println("Task1: " + stringsTests.testTask1());
-        System.out.println("Task2: " + stringsTests.testTask2());
-        System.out.println("Task3: " + stringsTests.testTask3());
-        System.out.println("Task4: " + stringsTests.testTask4());
-        System.out.println("Task5: " + stringsTests.testTask5());
+        stringsTests.testStatus("Task1", stringsTests.testTask1());
+        stringsTests.testStatus("Task2", stringsTests.testTask2());
+        stringsTests.testStatus("Task3", stringsTests.testTask3());
+        stringsTests.testStatus("Task4", stringsTests.testTask4());
+        stringsTests.testStatus("Task5", stringsTests.testTask5());
     }
 }
