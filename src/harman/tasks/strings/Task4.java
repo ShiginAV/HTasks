@@ -1,15 +1,13 @@
 package harman.tasks.strings;
 
+import java.util.Arrays;
+
 public class Task4 {
     public boolean isAnagram(String first, String second) {
-        String firstStr = first.replace(" ", "").toLowerCase();
-        String secondStr = second.replace(" ", "").toLowerCase();
-
-        for (int i = 1; i < firstStr.length(); i++) {
-            if (!firstStr.contains(secondStr.substring(i, i + 1))) {
-                return false;
-            }
-        }
-        return true;
+        char[] firstArr = first.replace(" ", "").toLowerCase().toCharArray();
+        char[] secondArr = second.replace(" ", "").toLowerCase().toCharArray();
+        Arrays.sort(firstArr);
+        Arrays.sort(secondArr);
+        return Arrays.equals(firstArr, secondArr);
     }
 }

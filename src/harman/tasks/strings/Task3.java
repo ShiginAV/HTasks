@@ -21,11 +21,11 @@ public class Task3 {
     }
 
     public String getInitials(String name, String surName) {
-        String initials = " . .";
-        if (name != null && surName != null) {
-            initials = String.valueOf(new char[] {name.charAt(0), '.', surName.charAt(0), '.'});
-        }
-        return initials;
+        String nameInitial = name.trim();
+        String surNameInitial = surName.trim();
+        if (nameInitial.equals("")) { nameInitial = " "; }
+        if (surNameInitial.equals("")) { surNameInitial = " "; }
+        return String.valueOf(new char[] {nameInitial.charAt(0), '.', surNameInitial.charAt(0), '.'});
     }
 
     private void printInitials() {
